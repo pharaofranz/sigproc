@@ -77,6 +77,7 @@ main (int argc, char **argv)
   send_int("telescope_id",telescope_id);
   send_int("data_type",1);
 
+  /* FK: commented out the below for Heimdall to be able to read the filterbanks
   send_string("FREQUENCY_START");
   send_int("nchans",schans);
   frmhz = (double *) malloc(sizeof(double)*schans);
@@ -88,8 +89,13 @@ main (int argc, char **argv)
     }
   }
   send_string("FREQUENCY_END");
+  */
+  // and added the below
+  send_double("fch1", frch1[0]);
+  send_double("foff", froff[0]);
+  send_int("nchans", schans);
+  // end of modifications
   
-
   if (!strings_equal(source_name,"")) {
     send_string("source_name");
     send_string(source_name);

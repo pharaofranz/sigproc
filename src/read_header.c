@@ -145,12 +145,16 @@ int read_header(FILE *inputfile) /* includefile */
       fprintf(stderr,"ERROR: %s\n",message);
       exit(1);
     } 
+    // FK start changes, 13 Dec 2019
+    /*
     if (totalbytes != ftell(inputfile)){
 	    fprintf(stderr,"ERROR: Header bytes does not equal file position\n");
 	    fprintf(stderr,"String was: '%s'\n",string);
 	    fprintf(stderr,"       header: %d file: %d\n",totalbytes,ftell(inputfile));
 	    exit(1);
     }
+    */
+    // stop first change
 
     if (isign < 0 && OSIGN > 0){
 	    fprintf(stderr,"WARNING! You are reading unsigned numbers with a signed version of sigproc\n");
@@ -165,12 +169,15 @@ int read_header(FILE *inputfile) /* includefile */
   /* add on last header string */
   totalbytes+=nbytes;
 
+  // FK second change
+  /*
   if (totalbytes != ftell(inputfile)){
 	  fprintf(stderr,"ERROR: Header bytes does not equal file position\n");
 	  fprintf(stderr,"       header: %d file: %d\n",totalbytes,ftell(inputfile));
 	  exit(1);
   }
-
+  */
+  // FK no more changes below
   /* return total number of bytes read */
   return totalbytes;
 }
